@@ -1,0 +1,13 @@
+To address the calculation order issue, one solution is to use a different approach that avoids the percentage calculation altogether. For example, if the element's width must be 50% minus 10px, you may need to adjust the parent element's width or use Javascript to dynamically calculate the width based on the parent's size.
+
+For the spacing issue, carefully review the `calc()` syntax.  Ensure there are no extra spaces and that operators (+, -, *, /) are correctly placed. Removing any unnecessary spaces around the operators usually resolves the issue.
+
+Here's an example demonstrating a potential solution to the width calculation using Javascript:
+
+```javascript
+const element = document.querySelector('.element');
+const parentWidth = element.parentElement.offsetWidth;
+element.style.width = `${parentWidth * 0.5 - 10}px`;
+```
+
+This approach ensures the calculation is performed accurately based on the parent element's width before setting the element's width.
