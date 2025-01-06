@@ -1,0 +1,12 @@
+The CSS property `calc()` is used to perform calculations within CSS. However, there are some unusual scenarios where it can lead to errors.  One such error is when using `calc()` with percentages and other units where the browser's calculation order is not what is expected, leading to unexpected results.
+
+For example:
+```css
+.element {
+  width: calc(50% - 10px);
+}
+```
+
+In this example, if the parent element's width is not fixed, the browser might calculate the percentage first, then subtract the pixels, leading to inaccurate results. This is because the browser determines the percentage of the parent element's width *before* subtracting 10px. The result is that the 10px is subtracted from the percentage-calculated width, instead of being subtracted before the percentage is calculated.
+
+Another issue arises with spaces around the operators in `calc()`. Extra spaces or missing spaces might lead to unexpected errors and the browser failing to parse the calculation correctly.
